@@ -11,6 +11,10 @@ import Util
 
 newtype CombinyInt = CombinyInt Integer deriving (Eq, Show)
 
+-- CombinyInts mappend by returning the first value if the two values are
+-- equal and returning 0 otherwise
+-- there's no identity I can think of for this operation,
+-- so that makes them just a semigroup
 instance Semigroup CombinyInt where
   (<>) x1 x2 = if x1 == x2 then x1 else CombinyInt 0
 

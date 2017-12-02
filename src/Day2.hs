@@ -9,6 +9,9 @@ lineToInts :: String -> [Integer]
 lineToInts s = foldl (++) [] $ someInts
   where someInts = fmap (maybeToList . readInteger) $ words s
 
+-- yeah yeah I know min and max exist as functions but if I do it this way
+-- I can traverse the list only once. Getting into the spirit of Christmas,
+-- or at least the spirit of puzzles, y'all
 intsToRange :: [Integer] -> Integer
 intsToRange (x:xs) = go 0 x x xs
   where
@@ -18,6 +21,8 @@ intsToRange (x:xs) = go 0 x x xs
       | x > max = go (range + (x - max)) min x xs
       | otherwise = go range min max xs
 
+-- a "quotient buddy" is some x from a list of numbers that either divides
+-- y evenly or is divided by y evenly
 findQuotientBuddy :: Integer -> [Integer] -> Maybe Integer
 findQuotientBuddy _ [] = Nothing
 findQuotientBuddy d xs = listToMaybe $
