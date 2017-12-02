@@ -3,6 +3,8 @@ module Day1 where
 import Data.Maybe
 import Data.Semigroup
 
+import Util
+
 -- Part 1
 -- sums of all numbers in a string of numbers that are the same as the next value
 -- in the string
@@ -14,15 +16,6 @@ instance Semigroup CombinyInt where
 
 fromCombinyInt :: CombinyInt -> Integer
 fromCombinyInt (CombinyInt x) = x
-
-allNums :: String
-allNums = "0123456789"
-
-readInteger :: String -> Maybe Integer
-readInteger "" = Nothing
-readInteger x
-  | elem (head x) allNums = Just (read x)
-  | otherwise = Nothing
 
 numsToNumList :: [CombinyInt] -> [Char] -> [CombinyInt]
 numsToNumList accum [] = accum
