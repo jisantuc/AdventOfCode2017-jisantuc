@@ -28,8 +28,8 @@ isValid2 s = go True (words s)
 
 main = do
   inString <- readFile "puzzles/puzzle04.txt"
-  validities1 <- return $ fmap isValid1 (lines inString)
+  validities1 <- return $ isValid1 <$> (lines inString)
   print $ "Number of valid lines, part 1: " ++ (show $ length $ filter id validities1)
-  validities2 <- return $ fmap isValid2 (lines inString)
+  validities2 <- return $ isValid2 <$> (lines inString)
   print $ "Number of valid lines, part 2: " ++ (show $ length $ filter id validities2)
 

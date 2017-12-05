@@ -123,7 +123,7 @@ addLocations locations
   | otherwise = locations
   where
     mostRecent = last locations
-    points = fmap fst locations
+    points = fst <$> locations
     point = fst mostRecent
 
 goUntil :: Integer -> Integer
