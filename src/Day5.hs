@@ -42,7 +42,7 @@ countJumps f j = go 0 (f j)
 
 main = do
   inf <- readFile "puzzles/puzzle05.txt"
-  steps <- return $ sequence $ readInt <$> lines inf
+  steps <- return $ traverse readInt (lines inf)
   jumper <- return $ (Jumper 0) <$> steps
   print $ "Number of normal steps to exit: " ++ (show $ (countJumps jump) <$> jumper)
   print $ "Number of weird steps to exit: " ++ (show $ (countJumps jumpWeird) <$> jumper)
